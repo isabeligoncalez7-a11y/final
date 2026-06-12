@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEONVERSE</title>
+
+<style>
+
+/* ===== RESET ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#070707;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===== FUNDO ===== */
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top left,#6d28d9,transparent 30%),
+    radial-gradient(circle at bottom right,#ff008c,transparent 30%);
+    z-index:-1;
+}
+
+/* ===== MENU ===== */
+
+header{
+    width:100%;
+    height:90px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    position:fixed;
+    top:0;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    z-index:999;
+}
+
+.logo{
+    font-size:38px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#ff008c;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    padding:12px 22px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:#ffffff12;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:140px 80px 80px;
+    gap:40px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-text h1{
+    font-size:85px;
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.hero-text span{
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+    color:#d1d1d1;
+    font-size:22px;
+    line-height:1.6;
+    max-width:700px;
+    margin-bottom:35px;
+}
+
+/* ===== BOTÕES ===== */
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:18px 35px;
+    border-radius:16px;
+    text-decoration:none;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.primary{
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+    color:white;
+}
+
+.secondary{
+    border:1px solid #ffffff30;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+/* ===== CARD PRINCIPAL ===== */
+
+.hero-card{
+    width:430px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border-radius:30px;
+    padding:25px;
+    box-shadow:0 0 40px rgba(255,0,140,0.2);
+}
+
+.hero-card img{
+    width:100%;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+.hero-card h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.hero-card p{
+    color:#cfcfcf;
+    margin-bottom:20px;
+}
+
+.play{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:none;
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+    color:white;
+    font-size:26px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.play:hover{
+    transform:scale(1.1);
+}
+
+/* ===== CARDS ===== */
+
+.section{
+    padding:40px 80px;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:25px;
+    padding:20px;
+    transition:0.4s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,0.08);
+}
+
+.card img{
+    width:100%;
+    border-radius:18px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.card p{
+    color:#cfcfcf;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    padding:50px;
+    text-align:center;
+    color:#999;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media(max-width:1000px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text h1{
+        font-size:55px;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+}
+
+@media(max-width:700px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding:140px 20px 50px;
+    }
+
+    .section{
+        padding:30px 20px;
+    }
+
+    .hero-card{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            O FUTURO DO <span>ENTRETENIMENTO</span>
+        </h1>
+
+        <p>
+            Um universo digital com efeitos neon, design moderno e experiência interativas 
+        </p>
+
+        <div class="buttons">
+
+
+
+        </div>
+
+
+<!-- CARDS -->
+
+<section class="section">
+
+    <h1 class="section-title">
+        Em Alta
+    </h1>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+
+            <h3>
+                Interface IA
+            </h3>
+
+            <p>
+                Design futurista com inteligência artificial.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop">
+
+            <h3>
+                Cyber Security
+            </h3>
+
+            <p>
+                Sistema avançado de proteção digital.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop">
+
+            <h3>
+                Robotic Future
+            </h3>
+
+            <p>
+                O próximo nível da tecnologia moderna.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+
+</footer>
+
+<script>
+
+function play(){
+    window.location.href = "formulario.html";
+}
+
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEONVERSE | Explorar</title>
+
+<style>
+
+/* ===== RESET ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#060606;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===== FUNDO ===== */
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top right,#7c3aed,transparent 30%),
+    radial-gradient(circle at bottom left,#ff008c,transparent 30%);
+    z-index:-1;
+}
+
+/* ===== HEADER ===== */
+
+header{
+    width:100%;
+    height:90px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:fixed;
+    top:0;
+    z-index:999;
+}
+
+.logo{
+    font-size:36px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ff008c;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    padding:12px 22px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:#ffffff12;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    padding:150px 80px 60px;
+}
+
+.hero h1{
+    font-size:70px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#d1d1d1;
+    font-size:22px;
+    max-width:800px;
+    line-height:1.6;
+}
+
+/* ===== GRID ===== */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:20px 80px 80px;
+}
+
+/* ===== CARD ===== */
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:28px;
+    overflow:hidden;
+    transition:0.4s;
+    position:relative;
+    backdrop-filter:blur(10px);
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 0 35px rgba(255,0,140,0.25);
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card h2{
+    margin-bottom:12px;
+    font-size:28px;
+}
+
+.card p{
+    color:#cfcfcf;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+/* ===== BUTTON ===== */
+
+.btn{
+    display:inline-block;
+    padding:14px 26px;
+    border-radius:14px;
+    text-decoration:none;
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+    color:white;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* ===== MINI STATUS ===== */
+
+.status{
+    position:absolute;
+    top:18px;
+    right:18px;
+    padding:10px 15px;
+    background:#00ff88;
+    color:black;
+    border-radius:30px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#999;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media(max-width:900px){
+
+    .hero{
+        padding:140px 20px 50px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .grid{
+        padding:20px;
+    }
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        NEON<span>VERSE</span>
+    </div>
+
+    <nav>
+
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        Explore o Universo Digital
+    </h1>
+
+    <p>
+        Descubra projetos futuristas, inteligência artificial,
+        sistemas cyberpunk e experiências tecnológicas
+        interativas inspiradas no futuro.
+    </p>
+
+</section>
+
+<!-- GRID -->
+
+<section class="grid">
+
+    <div class="card">
+
+        <div class="status">
+            ONLINE
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h2>
+                Neural AI
+            </h2>
+
+            <p>
+                Sistema avançado de inteligência artificial
+                com análise em tempo real.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="status">
+            BETA
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h2>
+                Cyber Security
+            </h2>
+
+            <p>
+                Plataforma futurista de proteção digital
+                e monitoramento inteligente.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="status">
+            NEW
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h2>
+                Quantum Core
+            </h2>
+
+            <p>
+                Interface neon inspirada em computação
+                quântica e realidade digital.
+            </p>
+
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="status">
+            ACTIVE
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h2>
+                Android X
+            </h2>
+
+            <p>
+                Tecnologia robótica avançada integrada
+                com sistemas futuristas.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+
+</footer>
+
+<script>
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+
+        card.style.transform =
+        "translateY(-12px) scale(1.02)";
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+        "translateY(0px) scale(1)";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEONVERSE</title>
+
+<style>
+
+/* ===== RESET ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===== FUNDO ===== */
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top left,#7c3aed,transparent 30%),
+    radial-gradient(circle at bottom right,#ff008c,transparent 30%);
+    z-index:-1;
+}
+
+/* ===== MENU ===== */
+
+header{
+    width:100%;
+    height:90px;
+    position:fixed;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    z-index:999;
+}
+
+.logo{
+    font-size:38px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ff008c;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    padding:12px 22px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:#ffffff12;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:140px 20px 80px;
+}
+
+.hero h1{
+    font-size:90px;
+    margin-bottom:25px;
+}
+
+.hero span{
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:850px;
+    font-size:22px;
+    color:#d1d1d1;
+    line-height:1.6;
+    margin-bottom:40px;
+}
+
+/* ===== BOTÕES ===== */
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.option-btn{
+    padding:18px 35px;
+    border:none;
+    border-radius:18px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.option-btn:hover{
+    transform:translateY(-5px);
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+}
+
+/* ===== CONTEÚDO DINÂMICO ===== */
+
+.dynamic-content{
+    width:100%;
+    padding:40px 80px 100px;
+    display:none;
+}
+
+/* ===== CARDS ===== */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.4s;
+    backdrop-filter:blur(10px);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(255,0,140,0.2);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#cfcfcf;
+    line-height:1.5;
+}
+
+/* ===== TITULO ===== */
+
+.content-title{
+    font-size:45px;
+    margin-bottom:30px;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media(max-width:900px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .dynamic-content{
+        padding:30px 20px 80px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- MENU -->
+
+<header>
+
+    <div class="logo">
+        NEON<span>VERSE</span>
+    </div>
+
+   
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        EXPLORE O <span>FUTURO</span>
+    </h1>
+
+    <p>
+        Clique em uma das opções abaixo para
+        abrir conteúdos futuristas interativos
+        dentro do próprio site.
+    </p>
+
+    <!-- BOTÕES -->
+
+    <div class="options">
+
+        <button class="option-btn"
+        onclick="showContent('ai')">
+
+            🤖 Inteligência Artificial
+
+        </button>
+
+        <button class="option-btn"
+        onclick="showContent('cyber')">
+
+            🌌 Cyberpunk
+
+        </button>
+
+        <button class="option-btn"
+        onclick="showContent('security')">
+
+            🔐 Segurança Digital
+
+        </button>
+
+        <button class="option-btn"
+        onclick="showContent('robots')">
+
+            ⚙ Robótica
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- CONTEÚDO DINÂMICO -->
+
+<section class="dynamic-content" id="content">
+
+    <h1 class="content-title" id="title">
+        Título
+    </h1>
+
+    <div class="cards" id="cards">
+
+    </div>
+
+</section>
+
+<script>
+
+const data = {
+
+    ai: {
+
+        title: "Inteligência Artificial",
+
+        cards: [
+
+            {
+                img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop",
+                title:"Neural System",
+                desc:"Sistema avançado de IA futurista."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1200&auto=format&fit=crop",
+                title:"Machine Learning",
+                desc:"Aprendizado inteligente em tempo real."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
+                title:"AI Interface",
+                desc:"Interface moderna inspirada no futuro."
+            }
+
+        ]
+
+    },
+
+    cyber: {
+
+        title: "Cyberpunk",
+
+        cards: [
+
+            {
+                img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
+                title:"Cyber City",
+                desc:"Cidade neon futurista."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
+                title:"Night Vision",
+                desc:"Tecnologia urbana cyberpunk."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+                title:"Digital Core",
+                desc:"Sistema digital avançado."
+            }
+
+        ]
+
+    },
+
+    security: {
+
+        title: "Segurança Digital",
+
+        cards: [
+
+            {
+                img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+                title:"Firewall X",
+                desc:"Proteção máxima de servidores."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+                title:"Encrypted Data",
+                desc:"Criptografia inteligente."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+                title:"Cyber Shield",
+                desc:"Monitoramento em tempo real."
+            }
+
+        ]
+
+    },
+
+    robots: {
+
+        title: "Robótica",
+
+        cards: [
+
+            {
+                img:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
+                title:"Android X",
+                desc:"Robôs inteligentes futuristas."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+                title:"Automation",
+                desc:"Máquinas modernas automatizadas."
+            },
+
+            {
+                img:"https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=1200&auto=format&fit=crop",
+                title:"Robot Labs",
+                desc:"Laboratórios tecnológicos."
+            }
+
+        ]
+
+    }
+
+};
+
+function showContent(type){
+
+    const section =
+    document.getElementById("content");
+
+    const title =
+    document.getElementById("title");
+
+    const cards =
+    document.getElementById("cards");
+
+    section.style.display = "block";
+
+    title.innerHTML = data[type].title;
+
+    cards.innerHTML = "";
+
+    data[type].cards.forEach(item => {
+
+        cards.innerHTML += `
+
+        <div class="card">
+
+            <img src="${item.img}">
+
+            <div class="card-content">
+
+                <h2>${item.title}</h2>
+
+                <p>${item.desc}</p>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    section.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!-- ========= NOVA SEÇÃO ========= -->
+<!-- COLE ABAIXO DA ÚLTIMA SECTION -->
+
+<section class="dynamic-content" 
+id="special-area"
+style="display:block;">
+
+    <h1 class="content-title">
+        EXPERIÊNCIAS INTERATIVAS
+    </h1>
+
+    <div class="cards">
+
+        <!-- CARD 1 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+
+                <h2>
+                    Central de IA
+                </h2>
+
+                <p>
+                    Acesse sistemas inteligentes
+                    e monitore dados futuristas.
+                </p>
+
+                <br>
+
+                <button class="option-btn"
+                onclick="openModal('ai')">
+
+                    Entrar
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+
+                <h2>
+                    Cidade Cyberpunk
+                </h2>
+
+                <p>
+                    Explore ambientes digitais
+                    iluminados por neon.
+                </p>
+
+                <br>
+
+                <button class="option-btn"
+                onclick="openModal('city')">
+
+                    Explorar
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+
+                <h2>
+                    Android Labs
+                </h2>
+
+                <p>
+                    Conheça robôs futuristas
+                    e sistemas automatizados.
+                </p>
+
+                <br>
+
+                <button class="option-btn"
+                onclick="openModal('robot')">
+
+                    Abrir
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========= MODAL ========= -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <span class="close"
+        onclick="closeModal()">
+
+            ✖
+
+        </span>
+
+        <div id="modal-content">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========= CSS EXTRA ========= -->
+
+<style>
+
+/* ===== MODAL ===== */
+
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-box{
+    width:80%;
+    max-width:800px;
+    background:#111;
+    border-radius:30px;
+    padding:40px;
+    border:1px solid rgba(255,255,255,0.08);
+    position:relative;
+    animation:show 0.4s ease;
+}
+
+@keyframes show{
+
+    from{
+        transform:scale(0.8);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.modal-box h1{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.modal-box p{
+    color:#cfcfcf;
+    line-height:1.8;
+    font-size:18px;
+}
+
+.modal-box img{
+    width:100%;
+    border-radius:20px;
+    margin-bottom:25px;
+}
+
+</style>
+
+<!-- ========= JAVASCRIPT ========= -->
+
+<script>
+
+function openModal(type){
+
+    const modal =
+    document.getElementById("modal");
+
+    const content =
+    document.getElementById("modal-content");
+
+    modal.style.display = "flex";
+
+    if(type === "ai"){
+
+        content.innerHTML = `
+
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop">
+
+        <h1>Central de IA</h1>
+
+        <p>
+        Sistemas neurais conectados em tempo real,
+        processando bilhões de informações futuristas.
+        Interface avançada inspirada em inteligência
+        artificial e computação moderna.
+        </p>
+
+        `;
+
+    }
+
+    if(type === "city"){
+
+        content.innerHTML = `
+
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
+
+        <h1>Cidade Cyberpunk</h1>
+
+        <p>
+        Ruas iluminadas por neon,
+        carros futuristas e sistemas
+        tecnológicos avançados dominam
+        essa metrópole digital.
+        </p>
+
+        `;
+
+    }
+
+    if(type === "robot"){
+
+        content.innerHTML = `
+
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop">
+
+        <h1>Android Labs</h1>
+
+        <p>
+        Laboratórios secretos desenvolvendo
+        robôs inteligentes e máquinas
+        automatizadas para o futuro.
+        </p>
+
+        `;
+
+    }
+
+}
+
+function closeModal(){
+
+    document.getElementById("modal")
+    .style.display = "none";
+
+}
+
+</script>
+ 
+ <index.html>
+
+
+
+Responda ao nosso formulário aqui 
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliação do Site</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+}
+
+.form-container{
+    width:100%;
+    max-width:700px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+    padding:35px;
+    backdrop-filter:blur(10px);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#cfcfcf;
+    margin-bottom:35px;
+}
+
+.pergunta{
+    margin-bottom:30px;
+}
+
+.pergunta h3{
+    margin-bottom:15px;
+    color:#ff008c;
+}
+
+label{
+    display:block;
+    margin:10px 0;
+    cursor:pointer;
+}
+
+input[type="radio"]{
+    margin-right:10px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    padding:15px;
+    resize:none;
+    margin-top:10px;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    margin-top:10px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:linear-gradient(90deg,#ff008c,#7c3aed);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.02);
+}
+
+#resultado{
+    margin-top:25px;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.08);
+    display:none;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="form-container">
+
+      <h1>Deixe sua opinião</h1>
+
+       <p class="subtitulo">
+        Sua avaliação é muito importante para nós.
+       </p>
+ 
+               <form id="formulario">
+
+               <div class="pergunta">
+              <h3>O que você achou do site?</h3>
+
+              <label><input type="radio" name="site" value="Muito Bom" required> Muito Bom</label>
+              <label><input type="radio" name="site" value="Bom"> Bom</label>
+              <label><input type="radio" name="site" value="Razoável"> Razoável</label>
+              <label><input type="radio" name="site" value="Ruim"> Ruim</label>
+              <label><input type="radio" name="site" value="Muito Ruim"> Muito Ruim</label>
+             </div>
+ 
+              <div class="pergunta">
+              <h3>Você achou fácil de utilizar?</h3>
+
+               <label><input type="radio" name="uso" value="Sim" required> Sim</label>
+              <label><input type="radio" name="uso" value="Com certeza"> Com certeza</label>
+              <label><input type="radio" name="uso" value="Mais ou menos"> Mais ou menos</label>
+              <label><input type="radio" name="uso" value="Não"> Não</label>
+             </div>
+
+             <div class="pergunta">
+             <h3>Qual nota você dá para o site?</h3>
+
+               <select id="nota">
+                 <option>1 ⭐</option>
+                 <option>2 ⭐⭐</option>
+                 <option>3 ⭐⭐⭐</option>
+                 <option>4 ⭐⭐⭐⭐</option>
+                 <option>5 ⭐⭐⭐⭐⭐</option>
+                </select>
+               </div>
+
+        <div class="pergunta">
+            <h3>Deixe um comentário</h3>
+
+            <textarea id="comentario"
+            placeholder="Digite sua opinião aqui..."></textarea>
+        </div>
+
+        <button type="submit">
+            Enviar Avaliação
+        </button>
+
+    </form>
+
+    <div id="resultado"></div>
+
+</div>
+
+<script>
+
+document.getElementById("formulario")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let site =
+    document.querySelector('input[name="site"]:checked').value;
+
+    let uso =
+    document.querySelector('input[name="uso"]:checked').value;
+
+    let nota =
+    document.getElementById("nota").value;
+
+    let comentario =
+    document.getElementById("comentario").value;
+
+    let resultado =
+    document.getElementById("resultado");
+
+    resultado.style.display = "block";
+
+    resultado.innerHTML = `
+        <h2>Avaliação enviada com sucesso!</h2>
+        <br>
+        <p><strong>Opinião:</strong> ${site}</p>
+        <p><strong>Facilidade:</strong> ${uso}</p>
+        <p><strong>Nota:</strong> ${nota}</p>
+        <p><strong>Comentário:</strong> ${comentario}</p>
+    `;
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+    
+     © 2026 - criado por Isabeli Gonçalez - desenvolvimento web              © 2026 -  todos os direitos reservados. 
